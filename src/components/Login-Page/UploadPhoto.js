@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 import { ReactComponent as UploadPhotoSVG } from "../../assets/uploadPhoto.svg";
 
-const UploadPhoto = ({ setFile }) => {
+const UploadPhoto = ({ file, setFile }) => {
   const hiddenFileInput = useRef(null);
 
   const handleClick = (event) => {
@@ -21,9 +21,14 @@ const UploadPhoto = ({ setFile }) => {
   return (
     <Container>
       <Label>add a photo</Label>
-      <Upload onClick={handleClick}>
-        <UploadPhotoSVG />
-      </Upload>
+      {!file ? (
+        <Upload onClick={handleClick}>
+          <UploadPhotoSVG />
+        </Upload>
+      ) : (
+        <Img src={file} alt="" />
+      )}
+
       <input
         type="file"
         ref={hiddenFileInput}
@@ -78,4 +83,10 @@ const Upload = styled.div`
     width: 98px;
     height: 98px;
   }
+`;
+
+const Img = styled.img`
+  width: 122px;
+  height: 122px;
+  border-radius: 50%;
 `;

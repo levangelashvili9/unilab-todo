@@ -23,7 +23,7 @@ const LoginPage = () => {
     <Container>
       <Form onSubmit={(e) => (file ? submitHandler(e) : e.preventDefault())}>
         <Heading>Get Started</Heading>
-        <UploadPhoto setFile={setFile} />
+        <UploadPhoto file={file} setFile={setFile} />
         <UsernameInput user={user} setUser={setUser} />
         <Button type="submit">Sign In</Button>
       </Form>
